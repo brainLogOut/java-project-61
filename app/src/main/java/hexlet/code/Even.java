@@ -18,9 +18,11 @@ public class Even {
             if ((answer.equalsIgnoreCase("yes")
                     && currentNumber % 2 == 0)
                     || (answer.equalsIgnoreCase("no")
-                    && currentNumber %2 != 0)) {
+                    && currentNumber % 2 != 0)) {
                 validAnswers++;
-            } else break;
+            } else {
+                break;
+            }
         } while (validAnswers < 3);
         if (validAnswers == 3) {
             System.out.println("Congratulations, " + userName + "!");
