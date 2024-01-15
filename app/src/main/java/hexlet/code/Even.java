@@ -25,9 +25,7 @@ public class Even {
                 break;
             }
         } while (validAnswers < 3);
-        if (validAnswers == 3) {
-            System.out.println("Congratulations, " + userName + "!");
-        }
+        System.out.println("Congratulations, " + userName + "!");
         scanner.close();
     }
 }
