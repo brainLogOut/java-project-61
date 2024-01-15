@@ -21,13 +21,12 @@ public class Even {
                     && currentNumber % 2 != 0)) {
                 validAnswers++;
             } else {
+                System.out.println("Wrong answer, try again later");
                 break;
             }
         } while (validAnswers < 3);
         if (validAnswers == 3) {
             System.out.println("Congratulations, " + userName + "!");
-        } else {
-            System.out.println("Wrong answer, try again later");
         }
         scanner.close();
     }
