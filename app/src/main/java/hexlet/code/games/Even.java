@@ -9,7 +9,7 @@ public class Even {
 
         Engine.greeting();
         System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < Engine.maxRounds; i++) {
             int currentNumber = (int) (Math.random() * 100);
             String result = "";
 
@@ -20,13 +20,11 @@ public class Even {
             } else if (currentNumber % 2 != 0) {
                 result = "no";
             }
-            if (!answer.equalsIgnoreCase(result)) {
-                System.out.println("'" + answer + "' is wrong answer ;(. Correct answer was '" + result + "'.");
+            String checkResult = Engine.check(answer, result, (i + 1));
+            if (checkResult.equals("error")) {
                 return 1;
             }
-            System.out.println("Correct!");
         }
-        System.out.println("Congratulations, " + Engine.userName + "!");
         scanner.close();
         return 0;
     }

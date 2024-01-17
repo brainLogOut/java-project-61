@@ -4,3 +4,6 @@
 
 ### Step 5, Even works accinema:
 ### https://asciinema.org/a/hojAqieiwOdi0AXESqTHvDFc0
+### .
+### Step 6, Even works accinema:
+### https://asciinema.org/a/krJ0SSbHWUU5U1ydwV9bpcfdj

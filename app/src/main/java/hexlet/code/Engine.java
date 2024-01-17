@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class Engine {
     public static String userName;
+    public static int maxRounds = 3;
     public static void greeting() {
         Scanner scanner = new Scanner(System.in);
 
@@ -13,7 +14,7 @@ public class Engine {
         System.out.println("Hello, " + userName + "!");
     }
 
-    public static String check (String answer, String result) {
+    public static String check (String answer, String result, int roundNum) {
         System.out.println("Your answer: " + answer);
         if (!result.equalsIgnoreCase(answer)) {
             System.out.println("'" + answer + "' is wrong answer ;(. Correct answer was '" + result + "'.");
@@ -21,6 +22,9 @@ public class Engine {
             return "error";
         }
         System.out.println("Correct!");
+        if (roundNum == maxRounds) {
+            System.out.println("Congratulations, " + userName + "!");
+        }
         return "correct";
     }
 }

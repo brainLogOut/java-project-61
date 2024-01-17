@@ -10,7 +10,7 @@ public class Calc {
 
         Engine.greeting();
         System.out.println("What is the result of the expression?");
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < Engine.maxRounds; i++) {
             int firstDigit = (int) (Math.random() * 11);
             int secondDigit = (int) (Math.random() * 13);
             int opCode = (int) (Math.random() * 10 / 4);
@@ -26,12 +26,11 @@ public class Calc {
             } else if (operations[opCode].equals("*")) {
                 result = Integer.toString(firstDigit * secondDigit);
             }
-            String checkResult = Engine.check(answer, result);
+            String checkResult = Engine.check(answer, result, (i + 1));
             if (checkResult.equals("error")) {
                 return 1;
             }
         }
-        System.out.println("Congratulations, " + Engine.userName + "!");
         scanner.close();
         return 0;
     }
