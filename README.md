@@ -7,3 +7,6 @@
 ### .
 ### Step 6, Calc works accinema:
 ### https://asciinema.org/a/krJ0SSbHWUU5U1ydwV9bpcfdj
+### .
+### Step 7, GCD works accinema:
+### https://asciinema.org/a/Zm7Omgckc6OCzxkYxWRcYD6nW

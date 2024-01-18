@@ -5,7 +5,7 @@ import hexlet.code.Engine;
 import java.util.Scanner;
 
 public class Calc {
-    public static int calcGame () {
+    public static int calcGame() {
         Scanner scanner = new Scanner(System.in);
 
         Engine.greeting();
@@ -15,17 +15,10 @@ public class Calc {
             int secondDigit = (int) (Math.random() * 13);
             int opCode = (int) (Math.random() * 10 / 4);
             String[] operations = {"+", "-", "*"};
-            String result = "";
+
             System.out.println("Question: " + firstDigit + " " + operations[opCode] + " " + secondDigit + " " + "=");
             String answer = scanner.next();
-
-            if (operations[opCode].equals("+")) {
-                result = Integer.toString(firstDigit + secondDigit);
-            } else if (operations[opCode].equals("-")) {
-                result = Integer.toString(firstDigit - secondDigit);
-            } else if (operations[opCode].equals("*")) {
-                result = Integer.toString(firstDigit * secondDigit);
-            }
+            String result = calcResult(firstDigit, secondDigit, operations[opCode]);
             String checkResult = Engine.check(answer, result, (i + 1));
             if (checkResult.equals("error")) {
                 return 1;
@@ -33,5 +26,18 @@ public class Calc {
         }
         scanner.close();
         return 0;
+    }
+
+    private static String calcResult(int firstDigit, int secondDigit, String operation) {
+        String cResult = "";
+
+        if (operation.equals("+")) {
+            cResult = Integer.toString(firstDigit + secondDigit);
+        } else if (operation.equals("-")) {
+            cResult = Integer.toString(firstDigit - secondDigit);
+        } else if (operation.equals("*")) {
+            cResult = Integer.toString(firstDigit * secondDigit);
+        }
+        return cResult;
     }
 }

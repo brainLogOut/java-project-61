@@ -14,7 +14,7 @@ public class Engine {
         System.out.println("Hello, " + userName + "!");
     }
 
-    public static String check (String answer, String result, int roundNum) {
+    public static String check(String answer, String result, int roundNum) {
         System.out.println("Your answer: " + answer);
         if (!result.equalsIgnoreCase(answer)) {
             System.out.println("'" + answer + "' is wrong answer ;(. Correct answer was '" + result + "'.");
