@@ -10,3 +10,6 @@
 ### .
 ### Step 7, GCD works accinema:
 ### https://asciinema.org/a/Zm7Omgckc6OCzxkYxWRcYD6nW
+### .
+### Step 8, Progression works accinema:
+### https://asciinema.org/a/5hZJFA44xGBTWrI6DANDRcC6w
