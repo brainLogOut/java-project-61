@@ -30,22 +30,29 @@ public class Gcd {
         int m = Math.abs(firstDigit);
         int n = Math.abs(secondDigit);
         int k = 1;
+        String result = "";
+        boolean exit = false;
 
         //Бинарный алгоритм Евклида.
         if (firstDigit == 0 && secondDigit == 0) {
             return "1";
         }
-        while (true) {
+        while (!exit) {
             if (m == 0 && n > 0) {
-                return Integer.toString(n);
+                result = Integer.toString(n);
+                exit = true;
             } else if (n == 0 && m > 0) {
-                return Integer.toString(m);
+                result = Integer.toString(m);
+                exit = true;
             } else if (m == n) {
-                return Integer.toString(m * k);
+                result = Integer.toString(m * k);
+                exit = true;
             } else if (m == 1 && n > 0) {
-                return Integer.toString(m * k);
+                result = Integer.toString(m * k);
+                exit = true;
             } else if (m > 0 && n == 1) {
-                return Integer.toString(n * k);
+                result = Integer.toString(n * k);
+                exit = true;
             } else if (m % 2 == 0 && n % 2 == 0) {
                 m /= 2;
                 n /= 2;
@@ -60,5 +67,6 @@ public class Gcd {
                 m = (m - n) / 2;
             }
         }
+        return result;
     }
 }
