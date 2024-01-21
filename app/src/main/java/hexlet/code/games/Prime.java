@@ -29,6 +29,9 @@ public class Prime {
         String cResult = "yes";
         int countMax = (int) (Math.sqrt(currentNumber));
 
+        if (currentNumber <= 1) {
+            return "no";
+        }
         for (int i = 2; i <= countMax; i++) {
             if (currentNumber % i == 0) {
                 cResult = "no";
