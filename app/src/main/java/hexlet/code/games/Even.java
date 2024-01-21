@@ -6,17 +6,17 @@ import java.util.Scanner;
 public class Even {
     public static int evenGame() {
         Scanner scanner = new Scanner(System.in);
-        String startMessage = "Answer 'yes' if the number is even, otherwise answer 'no'.";
+        String startMessageEven = "Answer 'yes' if the number is even, otherwise answer 'no'.";
 
         Engine.greeting();
-        System.out.println(startMessage);
+        System.out.println(startMessageEven);
         for (int i = 0; i < Engine.maxRounds; i++) {
-            int currentNumber = (int) (Math.random() * 100);
+            int currentNumberEven = (int) (Math.random() * 100);
 
-            System.out.println("Question: " + currentNumber);
-            String answer = scanner.next();
-            String result = calcResult(currentNumber);
-            String checkResult = Engine.check(answer, result, (i + 1));
+            System.out.println("Question: " + currentNumberEven);
+            String answerEven = scanner.next();
+            String resultEven = calcResult(currentNumberEven);
+            String checkResult = Engine.check(answerEven, resultEven, (i + 1));
             if (checkResult.equals("error")) {
                 return 1;
             }
