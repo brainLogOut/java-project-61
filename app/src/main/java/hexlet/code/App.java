@@ -23,6 +23,11 @@ public class App {
         System.out.println("0 - Exit");
         String gameNumber = scanner.next();
         System.out.println("Your choice: " + gameNumber);
+        gameRun(gameNumber);
+        scanner.close();
+    }
+
+    private static void gameRun(String gameNumber) {
         switch (gameNumber) {
             case "0":
                 break;
@@ -48,6 +53,5 @@ public class App {
                 System.out.println("Incorrect game number");
                 break;
         }
-        scanner.close();
     }
 }
