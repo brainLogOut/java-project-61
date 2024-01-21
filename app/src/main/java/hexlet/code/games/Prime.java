@@ -9,7 +9,7 @@ public class Prime {
         Scanner scanner = new Scanner(System.in);
 
         Engine.greeting();
-        System.out.println("Answer 'yes' if giving number is prime. Otherwise answer 'no'.");
+        System.out.println("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
         for (int i = 0; i < Engine.maxRounds; i++) {
             int currentNumber = (int) (Math.random() * 99);
 
