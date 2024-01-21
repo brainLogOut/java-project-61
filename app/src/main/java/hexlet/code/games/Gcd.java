@@ -9,7 +9,7 @@ public class Gcd {
         Scanner scanner = new Scanner(System.in);
 
         Engine.greeting();
-        System.out.println("Find the greatest common division of given numbers.");
+        System.out.println("Find the greatest common divisor of given numbers.");
         for (int i = 0; i < Engine.maxRounds; i++) {
             int firstDigit = (int) (Math.random() * 11);
             int secondDigit = (int) (Math.random() * 13);
