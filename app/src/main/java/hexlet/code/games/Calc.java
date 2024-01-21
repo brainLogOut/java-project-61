@@ -11,10 +11,12 @@ public class Calc {
         Engine.greeting();
         System.out.println("What is the result of the expression?");
         for (int i = 0; i < Engine.getMaxRounds(); i++) {
-            int firstDigit = Engine.genNumber(11);
-            int secondDigit = Engine.genNumber(13);
+            final int maxFirstDigit = 11;
+            int firstDigit = Engine.genNumber(maxFirstDigit);
+            int maxSecondDigit = 13;
+            int secondDigit = Engine.genNumber(maxSecondDigit);
             int opDivider = 4;
-            int opCode = Engine.genNumber(10) / 4;
+            int opCode = Engine.genNumber(10) / opDivider;
             String[] operations = {"+", "-", "*"};
 
             System.out.println("Question: " + firstDigit + " " + operations[opCode] + " " + secondDigit + " " + "=");

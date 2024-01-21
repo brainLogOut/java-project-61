@@ -11,7 +11,8 @@ public class Prime {
         Engine.greeting();
         System.out.println("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
         for (int i = 0; i < Engine.getMaxRounds(); i++) {
-            int currentNumber = Engine.genNumber(100);
+            int maxNumberValue = 100;
+            int currentNumber = Engine.genNumber(maxNumberValue);
 
             System.out.println("Question: " + currentNumber);
             String answer = scanner.next();
