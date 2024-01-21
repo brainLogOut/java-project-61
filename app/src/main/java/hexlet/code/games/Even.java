@@ -6,9 +6,10 @@ import java.util.Scanner;
 public class Even {
     public static int evenGame() {
         Scanner scanner = new Scanner(System.in);
+        String startMessage = "Answer 'yes' if the number is even, otherwise answer 'no'.";
 
         Engine.greeting();
-        System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
+        System.out.println(startMessage);
         for (int i = 0; i < Engine.maxRounds; i++) {
             int currentNumber = (int) (Math.random() * 100);
 

@@ -7,10 +7,10 @@ import java.util.Scanner;
 public class Prime {
     public static int primeGame() {
         Scanner scanner = new Scanner(System.in);
-        String message = "Answer 'yes' if giving number is prime. Otherwise answer 'no'.";
+        String startMessage = "Answer 'yes' if giving number is prime. Otherwise answer 'no'.";
 
         Engine.greeting();
-        System.out.println(message);
+        System.out.println(startMessage);
         for (int i = 0; i < Engine.maxRounds; i++) {
             int currentNumber = (int) (Math.random() * 99);
 
