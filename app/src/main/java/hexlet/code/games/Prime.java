@@ -10,8 +10,8 @@ public class Prime {
 
         Engine.greeting();
         System.out.println("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
-        for (int i = 0; i < Engine.maxRounds; i++) {
-            int currentNumber = (int) (Math.random() * 99);
+        for (int i = 0; i < Engine.getMaxRounds(); i++) {
+            int currentNumber = Engine.genNumber(100);
 
             System.out.println("Question: " + currentNumber);
             String answer = scanner.next();

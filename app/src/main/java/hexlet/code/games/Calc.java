@@ -10,10 +10,11 @@ public class Calc {
 
         Engine.greeting();
         System.out.println("What is the result of the expression?");
-        for (int i = 0; i < Engine.maxRounds; i++) {
-            int firstDigit = (int) (Math.random() * 11);
-            int secondDigit = (int) (Math.random() * 13);
-            int opCode = (int) (Math.random() * 10 / 4);
+        for (int i = 0; i < Engine.getMaxRounds(); i++) {
+            int firstDigit = Engine.genNumber(11);
+            int secondDigit = Engine.genNumber(13);
+            int opDivider = 4;
+            int opCode = Engine.genNumber(10) / 4;
             String[] operations = {"+", "-", "*"};
 
             System.out.println("Question: " + firstDigit + " " + operations[opCode] + " " + secondDigit + " " + "=");

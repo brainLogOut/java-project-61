@@ -9,8 +9,8 @@ public class Even {
 
         Engine.greeting();
         System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
-        for (int i = 0; i < Engine.maxRounds; i++) {
-            int currentNumber = (int) (Math.random() * 100);
+        for (int i = 0; i < Engine.getMaxRounds(); i++) {
+            int currentNumber = Engine.genNumber(100);
 
             System.out.println("Question: " + currentNumber);
             String answer = scanner.next();

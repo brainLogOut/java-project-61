@@ -3,8 +3,8 @@ package hexlet.code;
 import java.util.Scanner;
 
 public class Engine {
-    public static String userName;
-    public static int maxRounds = 3;
+    private static String userName;
+    private static final int maxRounds = 3;
     public static void greeting() {
         Scanner scanner = new Scanner(System.in);
 
@@ -26,5 +26,13 @@ public class Engine {
             System.out.println("Congratulations, " + userName + "!");
         }
         return "correct";
+    }
+
+    public static int genNumber(int maxValue) {
+        return (int) (Math.random() * maxValue);
+    }
+
+    public static int getMaxRounds() {
+        return maxRounds;
     }
 }

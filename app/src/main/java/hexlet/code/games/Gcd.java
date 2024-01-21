@@ -10,9 +10,9 @@ public class Gcd {
 
         Engine.greeting();
         System.out.println("Find the greatest common divisor of given numbers.");
-        for (int i = 0; i < Engine.maxRounds; i++) {
-            int firstDigit = (int) (Math.random() * 11);
-            int secondDigit = (int) (Math.random() * 13);
+        for (int i = 0; i < Engine.getMaxRounds(); i++) {
+            int firstDigit = Engine.genNumber(11);
+            int secondDigit = Engine.genNumber(13);
 
             System.out.println("Question: " + firstDigit + " " + secondDigit);
             String answer = scanner.next();
