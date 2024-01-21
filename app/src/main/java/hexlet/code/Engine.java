@@ -18,7 +18,7 @@ public class Engine {
         System.out.println("Your answer: " + answer);
         if (!result.equalsIgnoreCase(answer)) {
             System.out.println("'" + answer + "' is wrong answer ;(. Correct answer was '" + result + "'.");
-            System.out.println("Let's try again, " + userName);
+            System.out.println("Let's try again, " + userName + "!");
             return "error";
         }
         System.out.println("Correct!");
