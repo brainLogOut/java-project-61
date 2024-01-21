@@ -9,7 +9,7 @@ public class Progression {
         Scanner scanner = new Scanner(System.in);
 
         Engine.greeting();
-        System.out.println("What number missing in the progression?");
+        System.out.println("What number is missing in the progression?");
         for (int i = 0; i < Engine.maxRounds; i++) {
             int progressionLength = (int) (Math.random() * 5 + 5);
             String[] progressionNumbers = new String[progressionLength];
