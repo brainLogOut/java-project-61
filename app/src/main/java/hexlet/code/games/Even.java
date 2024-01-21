@@ -10,7 +10,7 @@ public class Even {
         Engine.greeting();
         System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
         for (int i = 0; i < Engine.getMaxRounds(); i++) {
-            int maxNumberValue = 100;
+            final int maxNumberValue = 100;
             int currentNumber = Engine.genNumber(maxNumberValue);
 
             System.out.println("Question: " + currentNumber);

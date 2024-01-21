@@ -11,9 +11,9 @@ public class Gcd {
         Engine.greeting();
         System.out.println("Find the greatest common divisor of given numbers.");
         for (int i = 0; i < Engine.getMaxRounds(); i++) {
-            int maxFirstDigit = 11;
+            final int maxFirstDigit = 11;
             int firstDigit = Engine.genNumber(maxFirstDigit);
-            int maxSecondDigit = 13;
+            final int maxSecondDigit = 13;
             int secondDigit = Engine.genNumber(maxSecondDigit);
 
             System.out.println("Question: " + firstDigit + " " + secondDigit);

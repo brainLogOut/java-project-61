@@ -11,8 +11,8 @@ public class Progression {
         Engine.greeting();
         System.out.println("What number is missing in the progression?");
         for (int i = 0; i < Engine.getMaxRounds(); i++) {
-            int lengthAdd = 5;
-            int progrLengthMax = 5;
+            final int lengthAdd = 5;
+            final int progrLengthMax = 5;
             int progressionLength = Engine.genNumber(progrLengthMax) + lengthAdd;
             String[] progressionNumbers = new String[progressionLength];
             int indexToHide = (int) (Math.random() * progressionLength);
@@ -47,10 +47,10 @@ public class Progression {
     }
 
     private static void progressionInit(String[] progressionNumbers) {
-        int maxFirstDigit = 11;
+        final int maxFirstDigit = 11;
         int firstDigit = Engine.genNumber(maxFirstDigit);
-        int progrDeltaMax = 13;
-        int deltaAdd = 1;
+        final int progrDeltaMax = 13;
+        final int deltaAdd = 1;
         int progressionDelta = Engine.genNumber(progrDeltaMax) + deltaAdd;
         progressionNumbers[0] = Integer.toString(firstDigit);
 

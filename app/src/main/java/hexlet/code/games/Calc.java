@@ -13,9 +13,9 @@ public class Calc {
         for (int i = 0; i < Engine.getMaxRounds(); i++) {
             final int maxFirstDigit = 11;
             int firstDigit = Engine.genNumber(maxFirstDigit);
-            int maxSecondDigit = 13;
+            final int maxSecondDigit = 13;
             int secondDigit = Engine.genNumber(maxSecondDigit);
-            int opDivider = 4;
+            final int opDivider = 4;
             int opCode = Engine.genNumber(10) / opDivider;
             String[] operations = {"+", "-", "*"};
 
