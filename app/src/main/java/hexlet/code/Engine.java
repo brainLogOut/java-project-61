@@ -27,8 +27,4 @@ public class Engine {
         }
         return "correct";
     }
-
-    public static int genNumber(int coefficient) {
-        return (int) (Math.random() * coefficient);
-    }
 }

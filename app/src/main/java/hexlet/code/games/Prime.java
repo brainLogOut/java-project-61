@@ -12,7 +12,7 @@ public class Prime {
         Engine.greeting();
         System.out.println(message);
         for (int i = 0; i < Engine.maxRounds; i++) {
-            int currentNumber = Engine.genNumber(100);
+            int currentNumber = (int) (Math.random() * 99);
 
             System.out.println("Question: " + currentNumber);
             String answer = scanner.next();
