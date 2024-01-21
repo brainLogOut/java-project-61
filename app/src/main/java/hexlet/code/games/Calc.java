@@ -15,8 +15,9 @@ public class Calc {
             int firstDigit = Engine.genNumber(maxFirstDigit);
             final int maxSecondDigit = 13;
             int secondDigit = Engine.genNumber(maxSecondDigit);
+            final int opCodeMax = 10;
             final int opDivider = 4;
-            int opCode = Engine.genNumber(10) / opDivider;
+            int opCode = Engine.genNumber(opCodeMax) / opDivider;
             String[] operations = {"+", "-", "*"};
 
             System.out.println("Question: " + firstDigit + " " + operations[opCode] + " " + secondDigit + " " + "=");

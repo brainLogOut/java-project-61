@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Engine {
     private static String userName;
-    private static final int maxRounds = 3;
+    private static final int MAX_ROUNDS = 3;
     public static void greeting() {
         Scanner scanner = new Scanner(System.in);
 
@@ -22,7 +22,7 @@ public class Engine {
             return "error";
         }
         System.out.println("Correct!");
-        if (roundNum == maxRounds) {
+        if (roundNum == MAX_ROUNDS) {
             System.out.println("Congratulations, " + userName + "!");
         }
         return "correct";
@@ -33,6 +33,6 @@ public class Engine {
     }
 
     public static int getMaxRounds() {
-        return maxRounds;
+        return MAX_ROUNDS;
     }
 }
