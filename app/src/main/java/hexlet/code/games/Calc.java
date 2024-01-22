@@ -45,7 +45,7 @@ public class Calc {
                 cResult = Integer.toString(firstDigit * secondDigit);
                 break;
             default:
-                System.out.println("Wrong opCode");
+                System.out.println("Wrong opCode.");
         }
         return cResult;
     }
