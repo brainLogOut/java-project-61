@@ -13,30 +13,21 @@ public class Even {
             final int maxNumberValue = 100;
             int currentNumber = Engine.genNumber(maxNumberValue);
             String result = "";
+            String checkResult;
+            String answer;
 
             System.out.println("Question: " + currentNumber);
-            String answer = scanner.next();
+            answer = scanner.next();
             if (currentNumber % 2 == 0) {
                 result = "yes";
-            } else if (currentNumber % 2 != 0) {
+            } else if (currentNumber % 2 > 0) {
                 result = "no";
             }
-            String checkResult = Engine.check(answer, result, (i + 1));
+            checkResult = Engine.check(answer, result, (i + 1));
             if (checkResult.equals("error")) {
                 break;
             }
         }
         scanner.close();
     }
-
-//    private static String calcResult(int currentNumber) {
-//        String cResult = "";
-//
-//        if (currentNumber % 2 == 0) {
-//            cResult = "yes";
-//        } else if (currentNumber % 2 != 0) {
-//            cResult = "no";
-//        }
-//        return cResult;
-//    }
 }
