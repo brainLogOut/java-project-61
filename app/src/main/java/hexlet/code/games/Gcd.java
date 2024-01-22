@@ -5,7 +5,7 @@ import hexlet.code.Engine;
 import java.util.Scanner;
 
 public class Gcd {
-    public static int gcdGame() {
+    public static void runGcdGame() {
         Scanner scanner = new Scanner(System.in);
 
         Engine.greeting();
@@ -21,11 +21,10 @@ public class Gcd {
             String result = calcResult(firstDigit, secondDigit);
             String checkResult = Engine.check(answer, result, (i + 1));
             if (checkResult.equals("error")) {
-                return 1;
+                break;
             }
         }
         scanner.close();
-        return 0;
     }
 
     private static String calcResult(int firstDigit, int secondDigit) {

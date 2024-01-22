@@ -4,7 +4,7 @@ import hexlet.code.Engine;
 
 import java.util.Scanner;
 public class Even {
-    public static void evenGame() {
+    public static void runEvenGame() {
         Scanner scanner = new Scanner(System.in);
 
         Engine.greeting();
@@ -13,17 +13,15 @@ public class Even {
             final int maxNumberValue = 100;
             int currentNumber = Engine.genNumber(maxNumberValue);
             String result = "";
-            String checkResult;
-            String answer;
 
             System.out.println("Question: " + currentNumber);
-            answer = scanner.next();
+            String answer = scanner.next();
             if (currentNumber % 2 == 0) {
                 result = "yes";
-            } else if (currentNumber % 2 > 0) {
+            } else if (currentNumber % 2 != 0) {
                 result = "no";
             }
-            checkResult = Engine.check(answer, result, (i + 1));
+            String checkResult = Engine.check(answer, result, (i + 1));
             if (checkResult.equals("error")) {
                 break;
             }

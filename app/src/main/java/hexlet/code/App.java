@@ -35,19 +35,19 @@ public class App {
                 Cli.greeting();
                 break;
             case "2":
-                Even.evenGame();
+                Even.runEvenGame();
                 break;
             case "3":
-                Calc.calcGame();
+                Calc.runCalcGame();
                 break;
             case "4":
-                Gcd.gcdGame();
+                Gcd.runGcdGame();
                 break;
             case "5":
-                Progression.progressionGame();
+                Progression.runProgressionGame();
                 break;
             case "6":
-                Prime.primeGame();
+                Prime.runPrimeGame();
                 break;
             default:
                 System.out.println("Incorrect game number");

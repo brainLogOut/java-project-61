@@ -5,7 +5,7 @@ import hexlet.code.Engine;
 import java.util.Scanner;
 
 public class Calc {
-    public static int calcGame() {
+    public static void runCalcGame() {
         Scanner scanner = new Scanner(System.in);
 
         Engine.greeting();
@@ -25,22 +25,27 @@ public class Calc {
             String result = calcResult(firstDigit, secondDigit, operations[opCode]);
             String checkResult = Engine.check(answer, result, (i + 1));
             if (checkResult.equals("error")) {
-                return 1;
+                break;
             }
         }
         scanner.close();
-        return 0;
     }
 
     private static String calcResult(int firstDigit, int secondDigit, String operation) {
         String cResult = "";
 
-        if (operation.equals("+")) {
-            cResult = Integer.toString(firstDigit + secondDigit);
-        } else if (operation.equals("-")) {
-            cResult = Integer.toString(firstDigit - secondDigit);
-        } else if (operation.equals("*")) {
-            cResult = Integer.toString(firstDigit * secondDigit);
+        switch (operation) {
+            case "+":
+                cResult = Integer.toString(firstDigit + secondDigit);
+                break;
+            case "-":
+                cResult = Integer.toString(firstDigit - secondDigit);
+                break;
+            case "*":
+                cResult = Integer.toString(firstDigit * secondDigit);
+                break;
+            default:
+                System.out.println("Wrong opCode");
         }
         return cResult;
     }

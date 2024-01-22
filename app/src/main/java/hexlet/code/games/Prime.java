@@ -5,7 +5,7 @@ import hexlet.code.Engine;
 import java.util.Scanner;
 
 public class Prime {
-    public static int primeGame() {
+    public static void runPrimeGame() {
         Scanner scanner = new Scanner(System.in);
 
         Engine.greeting();
@@ -19,11 +19,10 @@ public class Prime {
             String result = calcResult(currentNumber);
             String checkResult = Engine.check(answer, result, (i + 1));
             if (checkResult.equals("error")) {
-                return 1;
+                break;
             }
         }
         scanner.close();
-        return 0;
     }
 
     private static String calcResult(int currentNumber) {

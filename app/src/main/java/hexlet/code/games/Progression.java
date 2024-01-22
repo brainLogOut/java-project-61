@@ -5,7 +5,7 @@ import hexlet.code.Engine;
 import java.util.Scanner;
 
 public class Progression {
-    public static int progressionGame() {
+    public static void runProgressionGame() {
         Scanner scanner = new Scanner(System.in);
 
         Engine.greeting();
@@ -23,11 +23,10 @@ public class Progression {
             String result = progressionNumbers[indexToHide];
             String checkResult = Engine.check(answer, result, (i + 1));
             if (checkResult.equals("error")) {
-                return 1;
+                break;
             }
         }
         scanner.close();
-        return 0;
     }
 
     private static void questionPrint(String[] progressionNumbers, int positionToHide) {
