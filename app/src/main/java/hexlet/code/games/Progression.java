@@ -2,14 +2,12 @@ package hexlet.code.games;
 
 import hexlet.code.Engine;
 
-import java.util.Scanner;
-
 public class Progression {
-    public static void runProgressionGame() {
-        Scanner scanner = new Scanner(System.in);
+    public static void callGame() {
+        final int numberOfFields = 2;
+        String[][] questionsAndAnswers = new String[Engine.getMaxRounds()][numberOfFields];
+        String rules = "What number is missing in the progression?";
 
-        Engine.greeting();
-        System.out.println("What number is missing in the progression?");
         for (int i = 0; i < Engine.getMaxRounds(); i++) {
             final int lengthAdd = 5;
             final int progrLengthMax = 5;
@@ -18,31 +16,13 @@ public class Progression {
             int indexToHide = (int) (Math.random() * progressionLength);
 
             progressionInit(progressionNumbers);
-            questionPrint(progressionNumbers, indexToHide);
-            String answer = scanner.next();
-            String result = progressionNumbers[indexToHide];
-            String checkResult = Engine.check(answer, result, (i + 1));
-            if (checkResult.equals("error")) {
-                break;
-            }
-        }
-        scanner.close();
-    }
+            String question = genQuestion(progressionNumbers, indexToHide);;
+            String answer = progressionNumbers[indexToHide];
 
-    private static void questionPrint(String[] progressionNumbers, int positionToHide) {
-        StringBuilder question = new StringBuilder();
-
-        question.append("Question:");
-        for (int i = 0; i < progressionNumbers.length; i++) {
-            if (i != positionToHide) {
-                question.append(" ");
-                question.append(progressionNumbers[i]);
-            } else {
-                question.append(" ");
-                question.append("..");
-            }
+            questionsAndAnswers[i][numberOfFields - 2] = question;
+            questionsAndAnswers[i][numberOfFields-1] = answer;
         }
-        System.out.println(question);
+        Engine.play(questionsAndAnswers, rules);
     }
 
     private static void progressionInit(String[] progressionNumbers) {
@@ -57,5 +37,21 @@ public class Progression {
             int prevNumber = Integer.parseInt(progressionNumbers[i - 1]);
             progressionNumbers[i] = Integer.toString(prevNumber + progressionDelta);
         }
+    }
+
+    private static String genQuestion(String[] progressionNumbers, int positionToHide) {
+        StringBuilder question = new StringBuilder();
+
+        question.append("Question:");
+        for (int i = 0; i < progressionNumbers.length; i++) {
+            if (i != positionToHide) {
+                question.append(" ");
+                question.append(progressionNumbers[i]);
+            } else {
+                question.append(" ");
+                question.append("..");
+            }
+        }
+        return question.toString();
     }
 }

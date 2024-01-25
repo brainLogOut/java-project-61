@@ -5,7 +5,7 @@ import hexlet.code.Engine;
 import java.util.Scanner;
 
 public class Gcd {
-    public static void runGcdGame() {
+    public static void callGame() {
         Scanner scanner = new Scanner(System.in);
 
         Engine.greeting();

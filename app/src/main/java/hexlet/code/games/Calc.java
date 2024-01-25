@@ -5,7 +5,7 @@ import hexlet.code.Engine;
 import java.util.Scanner;
 
 public class Calc {
-    public static void runCalcGame() {
+    public static void callGame() {
         Scanner scanner = new Scanner(System.in);
 
         Engine.greeting();

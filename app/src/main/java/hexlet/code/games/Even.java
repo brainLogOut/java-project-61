@@ -4,7 +4,7 @@ import hexlet.code.Engine;
 
 import java.util.Scanner;
 public class Even {
-    public static void runEvenGame() {
+    public static void callGame() {
         Scanner scanner = new Scanner(System.in);
 
         Engine.greeting();
