@@ -2,32 +2,29 @@ package hexlet.code.games;
 
 import hexlet.code.Engine;
 
-import java.util.Scanner;
-
 public class Gcd {
     public static void callGame() {
-        Scanner scanner = new Scanner(System.in);
+        final int numberOfFields = 2;
+        String[][] questionsAndAnswers = new String[Engine.getMaxRounds()][numberOfFields];
+        String rules = "Find the greatest common divisor of given numbers.";
 
-        Engine.greeting();
-        System.out.println("Find the greatest common divisor of given numbers.");
         for (int i = 0; i < Engine.getMaxRounds(); i++) {
             final int maxFirstDigit = 11;
             int firstDigit = Engine.genNumber(maxFirstDigit);
             final int maxSecondDigit = 13;
             int secondDigit = Engine.genNumber(maxSecondDigit);
 
-            System.out.println("Question: " + firstDigit + " " + secondDigit);
-            String answer = scanner.next();
-            String result = calcResult(firstDigit, secondDigit);
-            String checkResult = Engine.check(answer, result, (i + 1));
-            if (checkResult.equals("error")) {
-                break;
-            }
+            String question = "Question: " + firstDigit + " " + secondDigit;
+            String answer = computeAnswer(firstDigit, secondDigit);
+
+            questionsAndAnswers[i][numberOfFields - 2] = question;
+            questionsAndAnswers[i][numberOfFields - 1] = answer;
         }
-        scanner.close();
+
+        Engine.play(questionsAndAnswers, rules);
     }
 
-    private static String calcResult(int firstDigit, int secondDigit) {
+    private static String computeAnswer(int firstDigit, int secondDigit) {
         int m = Math.abs(firstDigit);
         int n = Math.abs(secondDigit);
         int k = 1;

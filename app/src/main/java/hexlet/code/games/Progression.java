@@ -16,12 +16,13 @@ public class Progression {
             int indexToHide = (int) (Math.random() * progressionLength);
 
             progressionInit(progressionNumbers);
-            String question = genQuestion(progressionNumbers, indexToHide);;
+            String question = genQuestion(progressionNumbers, indexToHide);
             String answer = progressionNumbers[indexToHide];
 
             questionsAndAnswers[i][numberOfFields - 2] = question;
-            questionsAndAnswers[i][numberOfFields-1] = answer;
+            questionsAndAnswers[i][numberOfFields - 1] = answer;
         }
+
         Engine.play(questionsAndAnswers, rules);
     }
 

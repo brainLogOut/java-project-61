@@ -11,16 +11,18 @@ public class Prime {
         for (int i = 0; i < Engine.getMaxRounds(); i++) {
             final int maxNumberValue = 100;
             int currentNumber = Engine.genNumber(maxNumberValue);
-            String question = "Question : " + currentNumber;
-            String answer = calcResult(currentNumber);
+
+            String question = "Question: " + currentNumber;
+            String answer = computeAnswer(currentNumber);
 
             questionsAndAnswers[i][numberOfFields - 2] = question;
-            questionsAndAnswers[i][numberOfFields-1] = answer;
+            questionsAndAnswers[i][numberOfFields - 1] = answer;
         }
+
         Engine.play(questionsAndAnswers, rules);
     }
 
-    private static String calcResult(int currentNumber) {
+    private static String computeAnswer(int currentNumber) {
         String cResult = "yes";
         int countMax = (int) (Math.sqrt(currentNumber));
 

@@ -2,14 +2,12 @@ package hexlet.code.games;
 
 import hexlet.code.Engine;
 
-import java.util.Scanner;
-
 public class Calc {
     public static void callGame() {
-        Scanner scanner = new Scanner(System.in);
+        final int numberOfFields = 2;
+        String[][] questionsAndAnswers = new String[Engine.getMaxRounds()][numberOfFields];
+        String rules = "What is the result of the expression?";
 
-        Engine.greeting();
-        System.out.println("What is the result of the expression?");
         for (int i = 0; i < Engine.getMaxRounds(); i++) {
             final int maxFirstDigit = 11;
             int firstDigit = Engine.genNumber(maxFirstDigit);
@@ -20,18 +18,18 @@ public class Calc {
             int opCode = Engine.genNumber(opCodeMax) / opDivider;
             String[] operations = {"+", "-", "*"};
 
-            System.out.println("Question: " + firstDigit + " " + operations[opCode] + " " + secondDigit + " " + "=");
-            String answer = scanner.next();
-            String result = calcResult(firstDigit, secondDigit, operations[opCode]);
-            String checkResult = Engine.check(answer, result, (i + 1));
-            if (checkResult.equals("error")) {
-                break;
-            }
+            String question = "Question: " + firstDigit + " "
+                    + operations[opCode] + " " + secondDigit + " " + "=";
+            String answer = computeAnswer(firstDigit, secondDigit, operations[opCode]);
+
+            questionsAndAnswers[i][numberOfFields - 2] = question;
+            questionsAndAnswers[i][numberOfFields - 1] = answer;
         }
-        scanner.close();
+
+        Engine.play(questionsAndAnswers, rules);
     }
 
-    private static String calcResult(int firstDigit, int secondDigit, String operation) {
+    private static String computeAnswer(int firstDigit, int secondDigit, String operation) {
         String cResult = "";
 
         switch (operation) {

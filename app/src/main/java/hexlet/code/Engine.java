@@ -15,6 +15,7 @@ public class Engine {
         for (int i = 0; i < Engine.getMaxRounds(); i++) {
             final int questionIndex = questionsAndAnswers[i].length - 2;
             final int answerIndex = questionsAndAnswers[i].length - 1;
+
             String question = questionsAndAnswers[i][questionIndex];
             String validAnswer = questionsAndAnswers[i][answerIndex];
 
