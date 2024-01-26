@@ -50,7 +50,7 @@ public class App {
                 Prime.callGame();
                 break;
             default:
-                System.out.println("Incorrect game number");
+                System.out.println("Incorrect game number!");
                 break;
         }
     }
