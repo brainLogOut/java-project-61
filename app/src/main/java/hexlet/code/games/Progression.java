@@ -1,58 +1,71 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
+import hexlet.code.Utils;
 
 public class Progression {
     public static void callGame() {
         final int numberOfFields = 2;
-        String[][] questionsAndAnswers = new String[Engine.getMaxRounds()][numberOfFields];
+        String[][] questionsAndAnswers = new String[Engine.MAX_ROUNDS][numberOfFields];
         String rules = "What number is missing in the progression?";
 
-        for (int i = 0; i < Engine.getMaxRounds(); i++) {
-            final int lengthAdd = 5;
-            final int progrLengthMax = 5;
-            int progressionLength = Engine.genNumber(progrLengthMax) + lengthAdd;
-            String[] progressionNumbers = new String[progressionLength];
-            int indexToHide = (int) (Math.random() * progressionLength);
+        for (String[] questionOrAnswer : questionsAndAnswers) {
+            String[] roundData = generateRoundData();
 
-            progressionInit(progressionNumbers);
-            String question = genQuestion(progressionNumbers, indexToHide);
-            String answer = progressionNumbers[indexToHide];
+            String question = roundData[0];
+            String answer = roundData[1];
 
-            questionsAndAnswers[i][numberOfFields - 2] = question;
-            questionsAndAnswers[i][numberOfFields - 1] = answer;
+            questionOrAnswer[0] = question;
+            questionOrAnswer[1] = answer;
         }
 
         Engine.play(questionsAndAnswers, rules);
     }
 
-    private static void progressionInit(String[] progressionNumbers) {
-        final int maxFirstDigit = 11;
-        int firstDigit = Engine.genNumber(maxFirstDigit);
-        final int progrDeltaMax = 13;
-        final int deltaAdd = 1;
-        int progressionDelta = Engine.genNumber(progrDeltaMax) + deltaAdd;
-        progressionNumbers[0] = Integer.toString(firstDigit);
+    public static String[] generateRoundData() {
+        String[] generatedRoundData = new String[2];
+        String[] progressionAndHiddenItem = generateProgression();
+        final int questionIndex = 0;
+        final int answerIndex = 1;
 
-        for (int i = 1; i < progressionNumbers.length; i++) {
-            int prevNumber = Integer.parseInt(progressionNumbers[i - 1]);
-            progressionNumbers[i] = Integer.toString(prevNumber + progressionDelta);
-        }
+        generatedRoundData[questionIndex] = progressionAndHiddenItem[questionIndex];
+        generatedRoundData[answerIndex] = progressionAndHiddenItem[answerIndex];
+
+        return generatedRoundData;
     }
 
-    private static String genQuestion(String[] progressionNumbers, int positionToHide) {
-        StringBuilder question = new StringBuilder();
+    private static String[] generateProgression() {
+        StringBuilder progression = new StringBuilder();
+        String hiddenItem = "";
+        String[] progressionAndHiddenMember = new String[2];
+        final int minProgressionLength = 5;
+        final int maxProgressionLength = 10;
+        int progressionLength = Utils.genNumber(minProgressionLength, maxProgressionLength);
+        final int positionToHide = (int) (Math.random() * progressionLength) + 1;
+        final int minValueFirst = 0;
+        final int maxValueFirst = 20;
+        int firstNumber = Utils.genNumber(minValueFirst, maxValueFirst);
+        final int minValueDelta = 1;
+        final int maxValueDelta = 10;
+        int progressionDelta = Utils.genNumber(minValueDelta, maxValueDelta);
+        int currentMember = firstNumber;
 
-        question.append("Question:");
-        for (int i = 0; i < progressionNumbers.length; i++) {
+        progression.append("Question: ");
+        for (int i = 1; i <= progressionLength; i++) {
             if (i != positionToHide) {
-                question.append(" ");
-                question.append(progressionNumbers[i]);
+                progression.append(currentMember);
+                progression.append(" ");
             } else {
-                question.append(" ");
-                question.append("..");
+                progression.append("..");
+                progression.append(" ");
+                hiddenItem = Integer.toString(currentMember);
             }
+            currentMember += progressionDelta;
         }
-        return question.toString();
+
+        progressionAndHiddenMember[0] = progression.toString();
+        progressionAndHiddenMember[1] = hiddenItem;
+
+        return progressionAndHiddenMember;
     }
 }

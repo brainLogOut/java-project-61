@@ -1,7 +1,6 @@
 package hexlet.code;
 
 import hexlet.code.games.Calc;
-import hexlet.code.games.Cli;
 import hexlet.code.games.Even;
 import hexlet.code.games.Gcd;
 import hexlet.code.games.Progression;

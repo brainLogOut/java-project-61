@@ -1,25 +1,37 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
+import hexlet.code.Utils;
 
 public class Even {
     public static void callGame() {
         final int numberOfFields = 2;
-        String[][] questionsAndAnswers = new String[Engine.getMaxRounds()][numberOfFields];
+        String[][] questionsAndAnswers = new String[Engine.MAX_ROUNDS][numberOfFields];
         String rules = "Answer 'yes' if the number is even, otherwise answer 'no'.";
 
-        for (int i = 0; i < Engine.getMaxRounds(); i++) {
-            final int maxNumberValue = 100;
-            int currentNumber = Engine.genNumber(maxNumberValue);
+        for (String[] questionOrAnswer : questionsAndAnswers) {
+            String[] roundData = generateRoundData();
 
-            String question = "Question: " + currentNumber;
-            String answer = computeAnswer(currentNumber);
+            String question = roundData[0];
+            String answer = roundData[1];
 
-            questionsAndAnswers[i][numberOfFields - 2] = question;
-            questionsAndAnswers[i][numberOfFields - 1] = answer;
+            questionOrAnswer[0] = question;
+            questionOrAnswer[1] = answer;
         }
 
         Engine.play(questionsAndAnswers, rules);
+    }
+
+    public static String[] generateRoundData() {
+        String[] generatedRoundData = new String[2];
+        final int minValue = 0;
+        final int maxValue = 100;
+        int currentNumber = Utils.genNumber(minValue, maxValue);
+
+        generatedRoundData[0] = "Question: " + currentNumber;
+        generatedRoundData[1] = computeAnswer(currentNumber);
+
+        return generatedRoundData;
     }
 
     private static String computeAnswer(int currentNumber) {

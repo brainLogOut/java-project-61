@@ -1,50 +1,63 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
+import hexlet.code.Utils;
 
 public class Calc {
     public static void callGame() {
         final int numberOfFields = 2;
-        String[][] questionsAndAnswers = new String[Engine.getMaxRounds()][numberOfFields];
+        String[][] questionsAndAnswers = new String[Engine.MAX_ROUNDS][numberOfFields];
         String rules = "What is the result of the expression?";
 
-        for (int i = 0; i < Engine.getMaxRounds(); i++) {
-            final int maxFirstDigit = 11;
-            int firstDigit = Engine.genNumber(maxFirstDigit);
-            final int maxSecondDigit = 13;
-            int secondDigit = Engine.genNumber(maxSecondDigit);
-            final int opCodeMax = 10;
-            final int opDivider = 4;
-            int opCode = Engine.genNumber(opCodeMax) / opDivider;
-            String[] operations = {"+", "-", "*"};
+        for (String[] questionOrAnswer : questionsAndAnswers) {
+            String[] roundData = generateRoundData();
 
-            String question = "Question: " + firstDigit + " "
-                    + operations[opCode] + " " + secondDigit + " " + "=";
-            String answer = computeAnswer(firstDigit, secondDigit, operations[opCode]);
+            String question = roundData[0];
+            String answer = roundData[1];
 
-            questionsAndAnswers[i][numberOfFields - 2] = question;
-            questionsAndAnswers[i][numberOfFields - 1] = answer;
+            questionOrAnswer[0] = question;
+            questionOrAnswer[1] = answer;
         }
 
         Engine.play(questionsAndAnswers, rules);
     }
 
+    public static String[] generateRoundData() {
+        String[] generatedRoundData = new String[2];
+        final int minValueFirst = 0;
+        final int maxValueFirst = 11;
+        int firstNumber = Utils.genNumber(minValueFirst, maxValueFirst);
+        final int minValueSecond = 0;
+        final int maxValueSecond = 13;
+        int secondNumber = Utils.genNumber(minValueSecond, maxValueSecond);
+        final int minValueOpCode = 0;
+        final int maxValueOpCode = 2;
+        int opCode = Utils.genNumber(minValueOpCode, maxValueOpCode);
+        String[] operations = {"+", "-", "*"};
+
+        generatedRoundData[0] = "Question: " + firstNumber + " "
+                + operations[opCode] + " " + secondNumber + " " + "=";
+        generatedRoundData[1] = computeAnswer(firstNumber, secondNumber, operations[opCode]);
+
+        return generatedRoundData;
+    }
+
     private static String computeAnswer(int firstDigit, int secondDigit, String operation) {
-        String cResult = "";
+        String computedAnswer = "";
 
         switch (operation) {
             case "+":
-                cResult = Integer.toString(firstDigit + secondDigit);
+                computedAnswer = Integer.toString(firstDigit + secondDigit);
                 break;
             case "-":
-                cResult = Integer.toString(firstDigit - secondDigit);
+                computedAnswer = Integer.toString(firstDigit - secondDigit);
                 break;
             case "*":
-                cResult = Integer.toString(firstDigit * secondDigit);
+                computedAnswer = Integer.toString(firstDigit * secondDigit);
                 break;
             default:
                 System.out.println("Wrong opCode.");
         }
-        return cResult;
+        return computedAnswer;
     }
 }

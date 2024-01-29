@@ -1,27 +1,40 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
+import hexlet.code.Utils;
 
 public class Gcd {
     public static void callGame() {
         final int numberOfFields = 2;
-        String[][] questionsAndAnswers = new String[Engine.getMaxRounds()][numberOfFields];
+        String[][] questionsAndAnswers = new String[Engine.MAX_ROUNDS][numberOfFields];
         String rules = "Find the greatest common divisor of given numbers.";
 
-        for (int i = 0; i < Engine.getMaxRounds(); i++) {
-            final int maxFirstDigit = 11;
-            int firstDigit = Engine.genNumber(maxFirstDigit);
-            final int maxSecondDigit = 13;
-            int secondDigit = Engine.genNumber(maxSecondDigit);
+        for (String[] questionOrAnswer : questionsAndAnswers) {
+            String[] roundData = generateRoundData();
 
-            String question = "Question: " + firstDigit + " " + secondDigit;
-            String answer = computeAnswer(firstDigit, secondDigit);
+            String question = roundData[0];
+            String answer = roundData[1];
 
-            questionsAndAnswers[i][numberOfFields - 2] = question;
-            questionsAndAnswers[i][numberOfFields - 1] = answer;
+            questionOrAnswer[0] = question;
+            questionOrAnswer[1] = answer;
         }
 
         Engine.play(questionsAndAnswers, rules);
+    }
+
+    public static String[] generateRoundData() {
+        String[] generatedRoundData = new String[2];
+        final int minValueFirst = 0;
+        final int maxValueFirst = 11;
+        int firstNumber = Utils.genNumber(minValueFirst, maxValueFirst);
+        final int minValueSecond = 0;
+        final int maxValueSecond = 13;
+        int secondNumber = Utils.genNumber(minValueSecond, maxValueSecond);
+
+        generatedRoundData[0] = "Question: " + firstNumber + " " + secondNumber;
+        generatedRoundData[1] = computeAnswer(firstNumber, secondNumber);
+
+        return generatedRoundData;
     }
 
     private static String computeAnswer(int firstDigit, int secondDigit) {
