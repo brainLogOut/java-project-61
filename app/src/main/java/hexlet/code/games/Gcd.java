@@ -32,12 +32,12 @@ public class Gcd {
         int secondNumber = Utils.genNumber(minValueSecond, maxValueSecond);
 
         generatedRoundData[0] = "Question: " + firstNumber + " " + secondNumber;
-        generatedRoundData[1] = computeAnswer(firstNumber, secondNumber);
+        generatedRoundData[1] = computeGcd(firstNumber, secondNumber);
 
         return generatedRoundData;
     }
 
-    private static String computeAnswer(int firstDigit, int secondDigit) {
+    private static String computeGcd(int firstDigit, int secondDigit) {
         int m = Math.abs(firstDigit);
         int n = Math.abs(secondDigit);
         int k = 1;

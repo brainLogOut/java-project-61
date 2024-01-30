@@ -29,12 +29,12 @@ public class Prime {
         int currentNumber = Utils.genNumber(minValue, maxValue);
 
         generatedRoundData[0] = "Question: " + currentNumber;
-        generatedRoundData[1] = computeAnswer(currentNumber);
+        generatedRoundData[1] = isPrime(currentNumber);
 
         return generatedRoundData;
     }
 
-    private static String computeAnswer(int currentNumber) {
+    private static String isPrime(int currentNumber) {
         String computedAnswer = "yes";
         int countMax = (int) (Math.sqrt(currentNumber));
 

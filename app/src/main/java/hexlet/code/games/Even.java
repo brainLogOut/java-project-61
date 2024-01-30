@@ -29,12 +29,12 @@ public class Even {
         int currentNumber = Utils.genNumber(minValue, maxValue);
 
         generatedRoundData[0] = "Question: " + currentNumber;
-        generatedRoundData[1] = computeAnswer(currentNumber);
+        generatedRoundData[1] = isEven(currentNumber);
 
         return generatedRoundData;
     }
 
-    private static String computeAnswer(int currentNumber) {
+    private static String isEven(int currentNumber) {
         String answer = "";
         if (currentNumber % 2 == 0) {
             answer = "yes";

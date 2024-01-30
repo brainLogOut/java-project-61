@@ -37,12 +37,12 @@ public class Calc {
 
         generatedRoundData[0] = "Question: " + firstNumber + " "
                 + operations[opCode] + " " + secondNumber + " " + "=";
-        generatedRoundData[1] = computeAnswer(firstNumber, secondNumber, operations[opCode]);
+        generatedRoundData[1] = calculate(firstNumber, secondNumber, operations[opCode]);
 
         return generatedRoundData;
     }
 
-    private static String computeAnswer(int firstDigit, int secondDigit, String operation) {
+    private static String calculate(int firstDigit, int secondDigit, String operation) {
         String computedAnswer = "";
 
         switch (operation) {

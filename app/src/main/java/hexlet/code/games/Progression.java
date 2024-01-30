@@ -24,48 +24,51 @@ public class Progression {
 
     public static String[] generateRoundData() {
         String[] generatedRoundData = new String[2];
-        String[] progressionAndHiddenItem = generateProgression();
-        final int questionIndex = 0;
-        final int answerIndex = 1;
+        final int minProgressionLength = 5;
+        final int maxProgressionLength = 10;
+        int progressionLength = Utils.genNumber(minProgressionLength, maxProgressionLength);
+        final int indexToHide = (int) (Math.random() * progressionLength);
 
-        generatedRoundData[questionIndex] = progressionAndHiddenItem[questionIndex];
-        generatedRoundData[answerIndex] = progressionAndHiddenItem[answerIndex];
+        String[] progression = generateProgression(progressionLength);
+
+        generatedRoundData[0] = generateQuestion(progression, indexToHide);
+        generatedRoundData[1] = progression[indexToHide];
 
         return generatedRoundData;
     }
 
-    private static String[] generateProgression() {
-        StringBuilder progression = new StringBuilder();
-        String hiddenItem = "";
-        String[] progressionAndHiddenMember = new String[2];
-        final int minProgressionLength = 5;
-        final int maxProgressionLength = 10;
-        int progressionLength = Utils.genNumber(minProgressionLength, maxProgressionLength);
-        final int positionToHide = (int) (Math.random() * progressionLength) + 1;
+    private static String[] generateProgression(int progressionLength) {
+        String[] generatedProgression = new String[progressionLength];
         final int minValueFirst = 0;
         final int maxValueFirst = 20;
         int firstNumber = Utils.genNumber(minValueFirst, maxValueFirst);
         final int minValueDelta = 1;
         final int maxValueDelta = 10;
         int progressionDelta = Utils.genNumber(minValueDelta, maxValueDelta);
-        int currentMember = firstNumber;
+        int currentNumber = firstNumber;
 
-        progression.append("Question: ");
-        for (int i = 1; i <= progressionLength; i++) {
-            if (i != positionToHide) {
-                progression.append(currentMember);
-                progression.append(" ");
-            } else {
-                progression.append("..");
-                progression.append(" ");
-                hiddenItem = Integer.toString(currentMember);
-            }
-            currentMember += progressionDelta;
+        generatedProgression[0] = Integer.toString(firstNumber);
+        for (int i = 1; i < generatedProgression.length; i++) {
+            currentNumber += progressionDelta;
+            generatedProgression[i] = Integer.toString(currentNumber);
         }
 
-        progressionAndHiddenMember[0] = progression.toString();
-        progressionAndHiddenMember[1] = hiddenItem;
+        return generatedProgression;
+    }
 
-        return progressionAndHiddenMember;
+    private static String generateQuestion(String[] progression, int indexToHide) {
+        StringBuilder generatedQuestion = new StringBuilder();
+
+        generatedQuestion.append("Question: ");
+        for (int i = 0; i < progression.length; i++) {
+            if (i != indexToHide) {
+                generatedQuestion.append(progression[i]);
+                generatedQuestion.append(" ");
+            } else {
+                generatedQuestion.append("..");
+                generatedQuestion.append(" ");
+            }
+        }
+        return generatedQuestion.toString();
     }
 }
