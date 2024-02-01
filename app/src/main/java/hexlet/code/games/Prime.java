@@ -9,14 +9,8 @@ public class Prime {
         String[][] questionsAndAnswers = new String[Engine.MAX_ROUNDS][numberOfFields];
         String rules = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
 
-        for (String[] questionOrAnswer : questionsAndAnswers) {
-            String[] roundData = generateRoundData();
-
-            String question = roundData[0];
-            String answer = roundData[1];
-
-            questionOrAnswer[0] = question;
-            questionOrAnswer[1] = answer;
+        for (int i = 0; i < questionsAndAnswers.length; i++) {
+            questionsAndAnswers[i] = generateRoundData();
         }
 
         Engine.play(questionsAndAnswers, rules);
@@ -24,29 +18,27 @@ public class Prime {
 
     public static String[] generateRoundData() {
         String[] generatedRoundData = new String[2];
-        final int minValue = 0;
         final int maxValue = 100;
-        int currentNumber = Utils.genNumber(minValue, maxValue);
+        int currentNumber = Utils.generateNumber(maxValue);
 
-        generatedRoundData[0] = "Question: " + currentNumber;
-        generatedRoundData[1] = isPrime(currentNumber);
+        generatedRoundData[0] = Integer.toString(currentNumber);
+        generatedRoundData[1] = isPrime(currentNumber) ? "yes" : "no";
 
         return generatedRoundData;
     }
 
-    private static String isPrime(int currentNumber) {
-        String computedAnswer = "yes";
+    private static boolean isPrime(int currentNumber) {
         int countMax = (int) (Math.sqrt(currentNumber));
 
         if (currentNumber <= 1) {
-            return "no";
+            return false;
         }
         for (int i = 2; i <= countMax; i++) {
             if (currentNumber % i == 0) {
-                computedAnswer = "no";
-                break;
+                return false;
             }
         }
-        return computedAnswer;
+
+        return true;
     }
 }

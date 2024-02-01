@@ -4,19 +4,15 @@ import hexlet.code.Engine;
 import hexlet.code.Utils;
 
 public class Progression {
+    private static final int MAX_VALUE = 10;
+    private static final int MIN_VALUE = 5;
+
     public static void callGame() {
-        final int numberOfFields = 2;
-        String[][] questionsAndAnswers = new String[Engine.MAX_ROUNDS][numberOfFields];
+        String[][] questionsAndAnswers = new String[Engine.MAX_ROUNDS][2];
         String rules = "What number is missing in the progression?";
 
-        for (String[] questionOrAnswer : questionsAndAnswers) {
-            String[] roundData = generateRoundData();
-
-            String question = roundData[0];
-            String answer = roundData[1];
-
-            questionOrAnswer[0] = question;
-            questionOrAnswer[1] = answer;
+        for (int i = 0; i < questionsAndAnswers.length; i++) {
+            questionsAndAnswers[i] = generateRoundData();
         }
 
         Engine.play(questionsAndAnswers, rules);
@@ -24,12 +20,12 @@ public class Progression {
 
     public static String[] generateRoundData() {
         String[] generatedRoundData = new String[2];
-        final int minProgressionLength = 5;
-        final int maxProgressionLength = 10;
-        int progressionLength = Utils.genNumber(minProgressionLength, maxProgressionLength);
-        final int indexToHide = (int) (Math.random() * progressionLength);
+        int progressionLength = Utils.generateNumber(MIN_VALUE, MAX_VALUE);
+        final int indexToHide = Utils.generateNumber(progressionLength);
+        int progressionDelta = Utils.generateNumber(MIN_VALUE, MAX_VALUE);
+        int firstNumber = Utils.generateNumber(MAX_VALUE);
 
-        String[] progression = generateProgression(progressionLength);
+        String[] progression = generateProgression(firstNumber, progressionLength, progressionDelta);
 
         generatedRoundData[0] = generateQuestion(progression, indexToHide);
         generatedRoundData[1] = progression[indexToHide];
@@ -37,14 +33,8 @@ public class Progression {
         return generatedRoundData;
     }
 
-    private static String[] generateProgression(int progressionLength) {
+    private static String[] generateProgression(int firstNumber, int progressionLength, int progressionDelta) {
         String[] generatedProgression = new String[progressionLength];
-        final int minValueFirst = 0;
-        final int maxValueFirst = 20;
-        int firstNumber = Utils.genNumber(minValueFirst, maxValueFirst);
-        final int minValueDelta = 1;
-        final int maxValueDelta = 10;
-        int progressionDelta = Utils.genNumber(minValueDelta, maxValueDelta);
         int currentNumber = firstNumber;
 
         generatedProgression[0] = Integer.toString(firstNumber);
@@ -59,7 +49,6 @@ public class Progression {
     private static String generateQuestion(String[] progression, int indexToHide) {
         StringBuilder generatedQuestion = new StringBuilder();
 
-        generatedQuestion.append("Question: ");
         for (int i = 0; i < progression.length; i++) {
             if (i != indexToHide) {
                 generatedQuestion.append(progression[i]);
@@ -69,6 +58,7 @@ public class Progression {
                 generatedQuestion.append(" ");
             }
         }
+
         return generatedQuestion.toString();
     }
 }

@@ -9,14 +9,8 @@ public class Even {
         String[][] questionsAndAnswers = new String[Engine.MAX_ROUNDS][numberOfFields];
         String rules = "Answer 'yes' if the number is even, otherwise answer 'no'.";
 
-        for (String[] questionOrAnswer : questionsAndAnswers) {
-            String[] roundData = generateRoundData();
-
-            String question = roundData[0];
-            String answer = roundData[1];
-
-            questionOrAnswer[0] = question;
-            questionOrAnswer[1] = answer;
+        for (int i = 0; i < questionsAndAnswers.length; i++) {
+            questionsAndAnswers[i] = generateRoundData();
         }
 
         Engine.play(questionsAndAnswers, rules);
@@ -24,24 +18,16 @@ public class Even {
 
     public static String[] generateRoundData() {
         String[] generatedRoundData = new String[2];
-        final int minValue = 0;
         final int maxValue = 100;
-        int currentNumber = Utils.genNumber(minValue, maxValue);
+        int currentNumber = Utils.generateNumber(maxValue);
 
-        generatedRoundData[0] = "Question: " + currentNumber;
-        generatedRoundData[1] = isEven(currentNumber);
+        generatedRoundData[0] = Integer.toString(currentNumber);
+        generatedRoundData[1] = isEven(currentNumber) ? "yes" : "no";
 
         return generatedRoundData;
     }
 
-    private static String isEven(int currentNumber) {
-        String answer = "";
-        if (currentNumber % 2 == 0) {
-            answer = "yes";
-        } else if (currentNumber % 2 != 0) {
-            answer = "no";
-        }
-
-        return answer;
+    private static boolean isEven(int currentNumber) {
+        return currentNumber % 2 == 0;
     }
 }

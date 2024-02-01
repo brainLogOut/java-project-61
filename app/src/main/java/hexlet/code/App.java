@@ -23,7 +23,6 @@ public class App {
         String gameNumber = scanner.next();
         System.out.println("Your choice: " + gameNumber);
         gameRun(gameNumber);
-        scanner.close();
     }
 
     private static void gameRun(String gameNumber) {

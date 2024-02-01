@@ -7,7 +7,6 @@ public class Engine {
 
     public static void play(String[][] questionsAndAnswers, String rules) {
         Scanner scanner = new Scanner(System.in);
-        boolean successfulGame = true;
 
         System.out.println("Welcome to the Brain Games!");
         System.out.println("May I have your name?");
@@ -15,14 +14,14 @@ public class Engine {
         System.out.println("Hello, " + userName + "!");
         System.out.println(rules);
 
-        for (String[] questionOrAnswer : questionsAndAnswers) {
+        for (String[] questionAndAnswer : questionsAndAnswers) {
             final int questionIndex = 0;
             final int answerIndex = 1;
 
-            String question = questionOrAnswer[questionIndex];
-            String validAnswer = questionOrAnswer[answerIndex];
+            String question = questionAndAnswer[questionIndex];
+            String validAnswer = questionAndAnswer[answerIndex];
 
-            System.out.println(question);
+            System.out.println("Question: " + question);
             String userAnswer = scanner.next();
             System.out.println("Your answer: " + userAnswer);
 
@@ -30,18 +29,12 @@ public class Engine {
                 System.out.println("'" + userAnswer
                         + "' is wrong answer ;(. Correct answer was '"
                         + validAnswer + "'.");
-                successfulGame = false;
-                break;
+                System.out.println("Let's try again, " + userName + "!");
+                return;
             } else {
                 System.out.println("Correct!");
             }
         }
-
-        if (successfulGame) {
-            System.out.println("Congratulations, " + userName + "!");
-        } else {
-            System.out.println("Let's try again, " + userName + "!");
-        }
-        scanner.close();
+        System.out.println("Congratulations, " + userName + "!");
     }
 }
