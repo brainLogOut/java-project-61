@@ -5,8 +5,7 @@ import hexlet.code.Utils;
 
 public class Even {
     public static void callGame() {
-        final int numberOfFields = 2;
-        String[][] questionsAndAnswers = new String[Engine.MAX_ROUNDS][numberOfFields];
+        String[][] questionsAndAnswers = new String[Engine.MAX_ROUNDS][];
         String rules = "Answer 'yes' if the number is even, otherwise answer 'no'.";
 
         for (int i = 0; i < questionsAndAnswers.length; i++) {

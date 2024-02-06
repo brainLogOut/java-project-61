@@ -5,8 +5,7 @@ import hexlet.code.Utils;
 
 public class Gcd {
     public static void callGame() {
-        final int numberOfFields = 2;
-        String[][] questionsAndAnswers = new String[Engine.MAX_ROUNDS][numberOfFields];
+        String[][] questionsAndAnswers = new String[Engine.MAX_ROUNDS][];
         String rules = "Find the greatest common divisor of given numbers.";
 
         for (int i = 0; i < questionsAndAnswers.length; i++) {

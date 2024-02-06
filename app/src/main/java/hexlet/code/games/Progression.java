@@ -8,7 +8,7 @@ public class Progression {
     private static final int MIN_VALUE = 5;
 
     public static void callGame() {
-        String[][] questionsAndAnswers = new String[Engine.MAX_ROUNDS][2];
+        String[][] questionsAndAnswers = new String[Engine.MAX_ROUNDS][];
         String rules = "What number is missing in the progression?";
 
         for (int i = 0; i < questionsAndAnswers.length; i++) {

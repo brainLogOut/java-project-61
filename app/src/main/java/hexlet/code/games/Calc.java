@@ -5,8 +5,7 @@ import hexlet.code.Utils;
 
 public class Calc {
     public static void callGame() {
-        final int numberOfFields = 2;
-        String[][] questionsAndAnswers = new String[Engine.MAX_ROUNDS][numberOfFields];
+        String[][] questionsAndAnswers = new String[Engine.MAX_ROUNDS][];
         String rules = "What is the result of the expression?";
 
         for (int i = 0; i < questionsAndAnswers.length; i++) {
@@ -34,7 +33,7 @@ public class Calc {
     }
 
     private static String calculate(int firstDigit, int secondDigit, String operation) {
-        String computedAnswer = "";
+        String computedAnswer;
 
         switch (operation) {
             case "+":
@@ -47,7 +46,7 @@ public class Calc {
                 computedAnswer = Integer.toString(firstDigit * secondDigit);
                 break;
             default:
-                System.out.println("Wrong opCode.");
+                throw new RuntimeException("This operation in not supported.");
         }
         return computedAnswer;
     }
