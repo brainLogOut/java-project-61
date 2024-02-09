@@ -4,8 +4,8 @@ import hexlet.code.Engine;
 import hexlet.code.Utils;
 
 public class Progression {
-    private static final int MAX_VALUE = 10;
     private static final int MIN_VALUE = 5;
+    private static final int MAX_VALUE = 10;
 
     public static void callGame() {
         String[][] questionsAndAnswers = new String[Engine.MAX_ROUNDS][];
@@ -27,8 +27,8 @@ public class Progression {
 
         String[] progression = generateProgression(firstNumber, progressionLength, progressionDelta);
 
-        generatedRoundData[0] = generateQuestion(progression, indexToHide);
         generatedRoundData[1] = progression[indexToHide];
+        generatedRoundData[0] = generateQuestion(progression, indexToHide);
 
         return generatedRoundData;
     }
@@ -49,14 +49,10 @@ public class Progression {
     private static String generateQuestion(String[] progression, int indexToHide) {
         StringBuilder generatedQuestion = new StringBuilder();
 
-        for (int i = 0; i < progression.length; i++) {
-            if (i != indexToHide) {
-                generatedQuestion.append(progression[i]);
-                generatedQuestion.append(" ");
-            } else {
-                generatedQuestion.append("..");
-                generatedQuestion.append(" ");
-            }
+        progression[indexToHide] = "..";
+        for (String s : progression) {
+            generatedQuestion.append(s);
+            generatedQuestion.append(" ");
         }
 
         return generatedQuestion.toString();
